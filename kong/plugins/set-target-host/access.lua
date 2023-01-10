@@ -46,11 +46,7 @@ function _M.execute(conf)
   if header then
     value_to_replace = kong.request.get_header(header)
     if not (value_to_replace) then
-      -- Commenting below line of code not to enfore the header
-      -- as we want to use the actual host in service in case of this header
-      -- is not provided.
-      -- return_error("Invalid or missing header")
-      return
+      return_error("Invalid or missing header")
     end
   elseif query_arg then
     value_to_replace = kong.request.get_query_arg(query_arg)
